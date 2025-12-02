@@ -8,14 +8,14 @@ export class TodoService {
   private readonly todosSignal = signal<TodoItem[]>([]);
 
   // Public readonly access to todos
-  readonly todos = this.todosSignal. asReadonly();
+  readonly todos = this.todosSignal.asReadonly();
 
   // Derived state using computed signals
-  readonly completedTodos = computed(() => this.todosSignal(). filter((todo) => todo. completed));
+  readonly completedTodos = computed(() => this.todosSignal().filter((todo) => todo.completed));
 
-  readonly pendingTodos = computed(() => this. todosSignal(). filter((todo) => !todo.completed));
+  readonly pendingTodos = computed(() => this.todosSignal().filter((todo) => !todo.completed));
 
-  readonly completedCount = computed(() => this.completedTodos(). length);
+  readonly completedCount = computed(() => this.completedTodos().length);
 
   readonly pendingCount = computed(() => this.pendingTodos().length);
 
@@ -23,7 +23,7 @@ export class TodoService {
 
   // CRUD Operations
   addTodo(title: string): void {
-    const trimmedTitle = title. trim();
+    const trimmedTitle = title.trim();
     if (!trimmedTitle) {
       return;
     }
@@ -39,7 +39,7 @@ export class TodoService {
   }
 
   removeTodo(id: string): void {
-    this.todosSignal.update((todos) => todos. filter((todo) => todo.id !== id));
+    this.todosSignal.update((todos) => todos.filter((todo) => todo.id !== id));
   }
 
   toggleComplete(id: string): void {
@@ -49,7 +49,7 @@ export class TodoService {
   }
 
   updateTodo(id: string, title: string): void {
-    const trimmedTitle = title. trim();
+    const trimmedTitle = title.trim();
     if (!trimmedTitle) {
       return;
     }
