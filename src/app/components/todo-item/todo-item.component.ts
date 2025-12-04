@@ -5,18 +5,20 @@ import { TodoItem } from '../../models/todo-item.model';
   selector: 'app-todo-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <li class="todo-item" [class.completed]="todo().completed">
+    <li class="todo-item" data-testid="item-todo" [class.completed]="todo().completed">
       <label class="todo-label">
         <input
           type="checkbox"
+          data-testid="checkbox-todoComplete"
           [checked]="todo().completed"
           (change)="onToggle()"
           aria-label="Mark as {{ todo().completed ? 'incomplete' : 'complete' }}"
         />
-        <span class="todo-title">{{ todo().title }}</span>
+        <span class="todo-title" data-testid="text-todoTitle">{{ todo().title }}</span>
       </label>
       <button
         type="button"
+        data-testid="button-todoDelete"
         class="delete-button"
         (click)="onDelete()"
         [attr.aria-label]="'Delete ' + todo().title"

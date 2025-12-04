@@ -6,7 +6,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule],
   template: `
-    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="add-todo-form">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="add-todo-form" data-testid="form-addTodo">
       <div class="form-group">
         <label for="todoTitle" class="visually-hidden">New todo title</label>
         <input
@@ -20,7 +20,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
           aria-describedby="titleError"
         />
         @if (todoForm.controls.title.invalid && todoForm.controls.title.touched) {
-          <span id="titleError" class="error-message" role="alert">
+          <span id="titleError" class="error-message" role="alert" data-testid="text-titleError">
             Please enter a todo title
           </span>
         }
@@ -28,7 +28,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
       <button
         type="submit"
         class="add-button"
-        data-testid="button-addButton"
+        data-testid="button-addTodo"
         [disabled]="todoForm.invalid"
         aria-label="Add new todo"
       >

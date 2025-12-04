@@ -8,9 +8,11 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   imports: [TodoItemComponent],
   template: `
     @if (todos().length === 0) {
-      <p class="empty-message" role="status">No todos yet. Add one above!</p>
+      <p class="empty-message" role="status" data-testid="text-emptyMessage">
+        No todos yet. Add one above!
+      </p>
     } @else {
-      <ul class="todo-list" aria-label="Todo list">
+      <ul class="todo-list" aria-label="Todo list" data-testid="list-todos">
         @for (todo of todos(); track todo.id) {
           <app-todo-item
             [todo]="todo"

@@ -8,10 +8,10 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AddTodoComponent, TodoListComponent],
   template: `
-    <main class="app-container">
-      <header class="app-header">
-        <h1>Todo List</h1>
-        <p class="todo-stats" aria-live="polite">
+    <main class="app-container" data-testid="container-app">
+      <header class="app-header" data-testid="header-app">
+        <h1 data-testid="text-appTitle">Todo List</h1>
+        <p class="todo-stats" aria-live="polite" data-testid="text-todoStats">
           {{ todoService.pendingCount() }} pending, {{ todoService.completedCount() }} completed
         </p>
       </header>
@@ -25,10 +25,11 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
       />
 
       @if (todoService.completedCount() > 0) {
-        <footer class="app-footer">
+        <footer class="app-footer" data-testid="footer-app">
           <button
             type="button"
             class="clear-button"
+            data-testid="button-clearCompleted"
             (click)="onClearCompleted()"
             aria-label="Clear all completed todos"
           >
