@@ -18,6 +18,7 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
             [todo]="todo"
             (toggle)="onToggle($event)"
             (delete)="onDelete($event)"
+            (edit)="onEdit($event)"
           />
         }
       </ul>
@@ -43,6 +44,7 @@ export class TodoListComponent {
 
   readonly toggle = output<string>();
   readonly delete = output<string>();
+  readonly edit = output<{ id: string; title: string }>();
 
   onToggle(id: string): void {
     this.toggle.emit(id);
@@ -50,5 +52,9 @@ export class TodoListComponent {
 
   onDelete(id: string): void {
     this.delete.emit(id);
+  }
+
+  onEdit(event: { id: string; title: string }): void {
+    this.edit.emit(event);
   }
 }

@@ -22,6 +22,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
         [todos]="todoService.todos()"
         (toggle)="onToggle($event)"
         (delete)="onDelete($event)"
+        (edit)="onEdit($event)"
       />
 
       @if (todoService.completedCount() > 0) {
@@ -107,6 +108,10 @@ export class App {
 
   onDelete(id: string): void {
     this.todoService.removeTodo(id);
+  }
+
+  onEdit(event: { id: string; title: string }): void {
+    this.todoService.updateTodo(event.id, event.title);
   }
 
   onClearCompleted(): void {
