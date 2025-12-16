@@ -1,15 +1,16 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "extends":  "./tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": ["vitest/globals", "node"]
   },
   "files": [
-    "src/app/app.spec.ts"
+    "src/app/app.spec.ts",
+    "src/app/services/todo.service.spec.ts"
   ],
-  "include": [
+  "include":  [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ]
